@@ -6,13 +6,15 @@ Interactive prototyping with framer.js, not using Framer Studio.
 
 - atom 에디터에 `terminal-plus`, `git-plus` 패키지 설치
 
-- 터미널에서
+- 터미널에서 아래와 같이 입력하여 태스크 자동 실행 도구인 gulp 전역 설치
 ```sh
 npm install --global gulp
 ```
-입력하여 태스크 자동 실행 도구인 gulp 전역 설치
 
-- 터미널에서 `git clone https://github.com/implict/framer-tutorial.git` 입력하여 저장소를 복제하거나 튜토리얼 파일 다운로드
+- 튜토리얼 파일을 다운로드하거나 터미널 명령어로 깃허브 저장소 복제
+```sh
+git clone https://github.com/implict/framer-tutorial.git
+```
 
 ## How to build
 
@@ -21,7 +23,7 @@ npm install --global gulp
 ## Framer.js snippet
 
 - 마우스 클릭 이벤트
-  ```js
+  ```sh
   layer.on(Events.Click, function(event, layer) {
     setReaderVisible(false);
   });
