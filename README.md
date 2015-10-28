@@ -20,14 +20,23 @@ git clone https://github.com/implict/framer-tutorial.git
 
 - 터미널에서 `gulp` 입력
 
-## Framer.js snippet
+## Code snippet
 
 - 마우스 클릭 이벤트
-  ```sh
-  layer.on(Events.Click, function(event, layer) {
+  `layer.on(Events.Click, function(event, layer) {
     setReaderVisible(false);
   });
-  ```
+  `
+- [애니메이션 spring curve 속성](http://framerjs.com/tools/springcurves/)  
+
+- 애니메이션
+  `layer.animate({
+    properties: {
+        scale: .5
+      },
+    time: .5,
+    curve: "ease-in-out"
+  });`
 
 ## Having problems or suggestions?
 

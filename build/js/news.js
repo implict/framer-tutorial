@@ -149,19 +149,47 @@ content.superLayer = readerScroll.content;
 setReaderVisible(false);
 
 function setReaderVisible(bool) {
-  if (bool) {
 
-  } else {
+	var layers = [topBar, title, img, icon, readerScroll];
 
-  }
+	function fade(layers) {
+		(bool) ? fadeIn(layers) : fadeOut(layers);
+	}
 
-  topBar.visible = bool;
-  title.visible = bool;
-  img.visible = bool;
-  //content.visible = bool;
-  icon.visible = bool;
-  readerScroll.visible = bool;
+	fade(layers);
 }
+
+function fadeIn(layers) {
+
+	for (var layer in layers) {
+		layers[layer].opacity = 0;
+		layers[layer].visible = true;
+		layers[layer].animate({
+	    properties: {
+	        opacity: 1
+	      },
+	    time: .3,
+	    curve: "ease-in-out"
+	  });
+	}
+};
+
+function fadeOut(layers) {
+
+	for (var layer in layers) {
+		layers[layer].animate({
+	    properties: {
+	        opacity: 0
+	      },
+	    time: .3,
+	    curve: "ease-in-out"
+	  });
+	}
+
+	Utils.delay(.3, function() {
+		layers[layer].visible = false;
+	});
+};
 
 /**
  * 닫기 버튼 클릭하면 reader 페이지 안 보이게
@@ -171,5 +199,15 @@ close.on(Events.Click, function(event, layer) {
 });
 
 close.on(Events.MouseOver, function(event, layer) {
-	print(1);
+
+	if (close.rotation % 90 === 0)
+	{
+		close.animate({
+	    properties: {
+	        rotation: close.rotation + 90
+	      },
+	    time: .3,
+	    curve: "spring(603, 68, 28)"
+	  });
+	}
 })
