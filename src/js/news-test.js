@@ -48,63 +48,17 @@ txt4.y = 445;
 txt5.x = -62;
 txt5.y = 575;
 
-/**
- * 이미지 마스크 적용 위해 페이지 컴포넌트 사용
- */
-var page = new PageComponent({
-	width: pic1.width * .5,
-	height: pic1.height * .5,
-	scrollVertical: false,
-  scrollHorizontal: false,
-	index: 1
-});
+////////////////////////////////////////////////
+// news 코드 작성하세요.
+////////////////////////////////////////////////
 
-var page1 = new Layer({
-	width: page.width,
-	height: page.height,
-	superLayer: page.content,
-	backgroundColor: "#28affa"
-});
-
-pic1.superLayer = page1;
 
 
 /**
- * pic1 마우스 오버
- */
-pic1.on(Events.MouseOver, function(event, layer) {
-  pic1.animate({
-    properties: {
-        scale: .6
-      },
-    time: .5,
-    curve: "ease-in-out"
-  });
-});
-
-/**
- * pic1 마우스 아웃
- */
-pic1.on(Events.MouseOut, function(event, layer) {
-  pic1.animate({
-    properties: {
-        scale: .5
-      },
-    time: .5,
-    curve: "ease-in-out"
-  });
-});
-
-/**
- * pic1 클릭
- */
-pic1.on(Events.Click, function(event, layer) {
-  setReaderVisible(true);
-});
-
-/**
- * ================================================= Reader 페이지 설정
- */
+* Reader 페이지 초기 좌표와 크기 설정
+* 모바일웹 레티나 디스플레이 기준으로 이미지 크기를 반으로 줄임
+* 레티나 디스플레이가 아니라면 PSD 크기를 반으로 줄여서 그대로 임포트해도 됨
+*/
 var topBar = layersReader.topBar;
 var close = layersReader.close;
 var title = layersReader.title;
@@ -131,6 +85,7 @@ icon.y = 216;
 
 content.x = -150;
 content.y = -142;
+
 
 /**
  * 스크롤 페이지
@@ -163,7 +118,7 @@ function setReaderVisible(bool) {
 }
 
 /**
- * 
+ * fade in
  */
 function fadeIn(layers) {
 
@@ -180,6 +135,9 @@ function fadeIn(layers) {
 	}
 };
 
+/**
+ * fade out
+ */
 function fadeOut(layers) {
 
 	for (var layer in layers) {
@@ -197,26 +155,6 @@ function fadeOut(layers) {
 	});
 };
 
-/**
- * 닫기 버튼 클릭하면 reader 페이지 안 보이게
- */
-close.on(Events.Click, function(event, layer) {
-  setReaderVisible(false);
-});
-
-/**
- * 닫기 버튼 오버시 애니메이션
- */
-close.on(Events.MouseOver, function(event, layer) {
-
-	if (close.rotation % 90 === 0)
-	{
-		close.animate({
-	    properties: {
-	        rotation: close.rotation + 90
-	      },
-	    time: .3,
-	    curve: "spring(603, 68, 28)"
-	  });
-	}
-})
+////////////////////////////////////////////////
+// reader 코드 작성하세요.
+////////////////////////////////////////////////

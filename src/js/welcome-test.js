@@ -45,8 +45,6 @@ dotActive.y = 536.5;
 dotActive.x = 142;
 dotActive.index = 30;
 
-
-
 var dim = new Layer({
 	backgroundColor: "#292b32",
 	opacity: .8,
@@ -55,57 +53,6 @@ var dim = new Layer({
 	index: 10
 });
 
-/**
- * ======================================= page slide
- */
-var page = new PageComponent({
-	width: img1.width * .5,
-	height: img1.height * .5,
-	scrollVertical: false,
-	index: 1
-});
-
-var page1 = new Layer({
-	width: page.width,
-	height: page.height,
-	superLayer: page.content,
-	backgroundColor: "#28affa"
-});
-
-var page2 = new Layer({
-	width: page.width,
-	height: page.height,
-	backgroundColor: "#90D7FF"
-});
-
-page.addPage(page2, "right");
-
-img1.superLayer = page1;
-img2.superLayer = page2;
-
-/**
- * set dotActive
- */
-page.on("change:currentPage", function() {
-	//print(page.currentPage.id);
-	var id = page.currentPage.id;
-
-	if (id === 11) {
-		dotActive.x = 142;
-	} else if (id == 12) {
-		dotActive.x = 159;
-	}
-});
-
-
-
-
-
-
-
-
-/**
- * layerA.states.switch("stateB", time: 1, curve: "ease")
- * >>> layerA.states.switch("stateB", {time: 1, curve: "ease"});
- */
-//layers.img1.states.switch("stateA", {time: .5, curve: "ease"});
+////////////////////////////////////////////////
+// 아래 슬라이드 관련 코드 작성하세요.
+////////////////////////////////////////////////

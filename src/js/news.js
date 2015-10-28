@@ -148,6 +148,9 @@ content.superLayer = readerScroll.content;
 // 처음에는 reader 페이지 안 보이게 설정
 setReaderVisible(false);
 
+/**
+ * reader 페이지 visible 제어
+ */
 function setReaderVisible(bool) {
 
 	var layers = [topBar, title, img, icon, readerScroll];
@@ -159,6 +162,9 @@ function setReaderVisible(bool) {
 	fade(layers);
 }
 
+/**
+ * 
+ */
 function fadeIn(layers) {
 
 	for (var layer in layers) {
@@ -198,6 +204,9 @@ close.on(Events.Click, function(event, layer) {
   setReaderVisible(false);
 });
 
+/**
+ * 닫기 버튼 오버시 애니메이션
+ */
 close.on(Events.MouseOver, function(event, layer) {
 
 	if (close.rotation % 90 === 0)

@@ -19,6 +19,13 @@ var text = layers.text;
 var dotActive = layers.dotActive;
 var pageDot = layers.pageDot;
 
+img1.scale = .5;
+img1.originY = 0;
+img1.originX = 0;
+
+img2.scale = .5;
+img2.originY = 0;
+img2.originX = 0;
 
 text.visible = true;
 text.scale = .5;
@@ -74,14 +81,7 @@ var page2 = new Layer({
 page.addPage(page2, "right");
 
 img1.superLayer = page1;
-img1.scale = .5;
-img1.originY = 0;
-img1.originX = 0;
-
 img2.superLayer = page2;
-img2.scale = .5;
-img2.originY = 0;
-img2.originX = 0;
 
 /**
  * set dotActive
