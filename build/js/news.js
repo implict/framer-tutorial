@@ -103,17 +103,22 @@ pic1.on(Events.Click, function(event, layer) {
 });
 
 /**
- * Reader 페이지 설정
+ * ================================================= Reader 페이지 설정
  */
 var topBar = layersReader.topBar;
+var close = layersReader.close;
 var title = layersReader.title;
 var img = layersReader.img;
 var content = layersReader.content;
 var icon = layersReader.icons;
 
 topBar.scale = title.scale = img.scale = content.scale = icon.scale = .5;
+
 topBar.x = 136;
 topBar.y = 21;
+
+close.x = 360;
+close.y = 4;
 
 title.x = -73;
 title.y = 40;
@@ -127,6 +132,9 @@ icon.y = 216;
 content.x = -150;
 content.y = -142;
 
+/**
+ * 스크롤 페이지
+ */
 var readerScroll = new ScrollComponent({
   y: 297,
   width: img.width * .5,
@@ -137,6 +145,7 @@ var readerScroll = new ScrollComponent({
 
 content.superLayer = readerScroll.content;
 
+// 처음에는 reader 페이지 안 보이게 설정
 setReaderVisible(false);
 
 function setReaderVisible(bool) {
@@ -153,3 +162,14 @@ function setReaderVisible(bool) {
   icon.visible = bool;
   readerScroll.visible = bool;
 }
+
+/**
+ * 닫기 버튼 클릭하면 reader 페이지 안 보이게
+ */
+close.on(Events.Click, function(event, layer) {
+  setReaderVisible(false);
+});
+
+close.on(Events.MouseOver, function(event, layer) {
+	print(1);
+})
