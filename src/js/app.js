@@ -1,10 +1,5 @@
 var layers = Framer.Importer.load("imported/Welcome 1");
 
-// var device = new Framer.DeviceComponent();
-//
-// device.setupContext();
-// device.deviceType = "iphone-5c-pink";
-
 /**
  * ======================================= asset init
  */
@@ -19,9 +14,11 @@ var text = layers.text;
 var dotActive = layers.dotActive;
 var pageDot = layers.pageDot;
 
-img1.scale = .5;
+img1.scale = 0.5;
+//img1.rotation = 45;
 img1.originY = 0;
-img1.originX = 0;
+img1.originX = 0; // 0~1, 0.5
+//img1.visible = false;
 
 img2.scale = .5;
 img2.originY = 0;
@@ -45,8 +42,6 @@ dotActive.y = 536.5;
 dotActive.x = 142;
 dotActive.index = 30;
 
-
-
 var dim = new Layer({
 	backgroundColor: "#292b32",
 	opacity: .8,
@@ -62,6 +57,7 @@ var page = new PageComponent({
 	width: img1.width * .5,
 	height: img1.height * .5,
 	scrollVertical: false,
+	// scrollHorizontal: false,
 	index: 1
 });
 
@@ -69,7 +65,7 @@ var page1 = new Layer({
 	width: page.width,
 	height: page.height,
 	superLayer: page.content,
-	backgroundColor: "#28affa"
+	backgroundColor: "#ff0000"
 });
 
 var page2 = new Layer({
@@ -78,16 +74,24 @@ var page2 = new Layer({
 	backgroundColor: "#90D7FF"
 });
 
+var page3 = new Layer({
+	width: page.width,
+	height: page.height,
+	backgroundColor: "#90D7FF"
+});
+
 page.addPage(page2, "right");
+page.addPage(page3, "right");
 
 img1.superLayer = page1;
 img2.superLayer = page2;
+img1.superLayer = page3;
 
 /**
  * set dotActive
  */
 page.on("change:currentPage", function() {
-	//print(page.currentPage.id);
+	print(page.currentPage.id);
 	var id = page.currentPage.id;
 
 	if (id === 11) {

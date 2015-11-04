@@ -53,7 +53,7 @@ gulp.task('watch', ['connect'], function () {
   });
 
 	// watch for coffeescript file changes
-	//gulp.watch(['./src/coffee/**'], ['coffee']);
+	gulp.watch(['./src/coffee/**'], ['coffee']);
   gulp.watch(['./src/imported/**', './src/js/**', './src/**'], ['move']);
 });
 
