@@ -1,5 +1,3 @@
-
-
 /**
  * 레이어 만들기
  * 위치, 크기, 표현여부부 등의 속성 가지고 있음.
@@ -90,3 +88,53 @@ layerB.animate({
     rotationY: 180
   }
 });
+
+
+/**
+ * video
+ */
+
+var videoLayer = new VideoLayer({
+ video: "assets/mov1.mp4",
+ width: 800,
+ height: 600,
+ backgroundColor: ""
+});
+
+videoLayer.player.autoplay = true;
+
+var textLayer = new Layer();
+textLayer.backgroundColor = "";
+textLayer.y = 100;
+textLayer.html = "<h1>Hello</h1>";
+
+/**
+ * audio 재생 - p5.js 사용
+ */
+
+layerB.on(Events.Click, function(event, layer) {
+  play();
+});
+
+var s;
+
+
+function preload() {
+  s = loadSound('assets/snd.mp3');
+}
+
+function setup() {
+  //s.play();
+  createCanvas(800, 600);
+}
+
+function draw() {
+  background(255);
+  smooth();
+  textSize(100);
+  //text("hello",  300, 300);
+}
+
+function play() {
+  s.play();
+}
