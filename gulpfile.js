@@ -9,6 +9,7 @@ var opn = require('opn');
 var gulpLivereload = require('gulp-livereload');
 var coffee = require('gulp-coffee');
 var clean = require('gulp-clean');
+var imageop = require('gulp-image-optimization');
 
 /*
  * ---------->  Main Config  <-------------
@@ -55,6 +56,7 @@ gulp.task('watch', ['connect'], function () {
 	// watch for coffeescript file changes
 	gulp.watch(['./src/coffee/**'], ['coffee']);
   gulp.watch(['./src/imported/**', './src/js/**', './src/**'], ['move']);
+	//gulp.watch(['./src/imported/**'], ['images']);
 });
 
 // `gulp serve` task loading the URL in your browser
@@ -111,4 +113,13 @@ gulp.task('coffee', function() {
   gulp.src('src/coffee/**/*.coffee')
 		.pipe(coffee())
     .pipe(gulp.dest('build/js'))
+});
+
+// image optimization
+gulp.task('images', function(cb) {
+    gulp.src(['src/imported/onepage/**/*.png']).pipe(imageop({
+        optimizationLevel: 10,
+        progressive: true,
+        interlaced: true
+    })).pipe(gulp.dest('build')).on('end', cb).on('error', cb);
 });
