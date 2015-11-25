@@ -5,10 +5,16 @@ var layers = Framer.Importer.load("imported/onepage");
  */
 var head = layers.head;
 var about = layers.about;
+var feature = layers.feature;
 
 function draw() {
 
 };
+
+$(window).resize(function() {
+  //head.x = (Screen.width - head.width)/2;
+  //feature.x = (Screen.width - feature.width)/2;
+});
 
 // header 상단 고정 (sticky nav)
 $(window).scroll(function() {
@@ -18,6 +24,16 @@ $(window).scroll(function() {
   //   headBg.opacity = 1;
   // }
   head.y = window.scrollY;
+
+  //console.log(window.scrollY);
+
+  if (window.scrollY < 10) {
+    if(videoLayer.player.paused === true) {
+      videoLayer.player.play();
+    }
+  } else {
+    videoLayer.player.pause();
+  }
 });
 
 // about 마우스 오버 버튼 처리
@@ -62,7 +78,7 @@ videoLayer.player.autoplay = true;
 videoLayer.player.loop = true;
 videoLayer.superLayer = video;
 
-// 비디오 클릭 이벤트, 
+// 비디오 클릭 이벤트,
 videoLayer.on(Events.Click, function() {
   if(videoLayer.player.paused === true) {
     videoLayer.player.play();
@@ -85,4 +101,19 @@ videoLayer.on(Events.Click, function() {
     });
     videoLayer.brightness = 80;
   }
+});
+
+// 썸네일 클릭 - 팝업
+
+var thumb = layers.imgIcon;
+var thumbHover = layers.imgIconHover;
+
+thumbHover.visible = false;
+
+thumb.on(Events.Click, function() {
+  thumbHover.visible = true;
+});
+
+thumbHover.on(Events.Click, function() {
+  thumbHover.visible = false;
 });
